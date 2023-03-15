@@ -10,7 +10,7 @@ import { io } from "socket.io-client";
 
 // const socket = io("http://localhost:5000");
 
-const socket=io("https://mern-online-ide.vercel.app/");
+const socket=io("https://code-editor-api-l6iv.onrender.com");
 function Compiler() {
   const [data, setData] = useState("");
   const [output, setOutput] = useState("");
