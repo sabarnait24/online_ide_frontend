@@ -36,6 +36,7 @@ function Compiler() {
       body: JSON.stringify(odata),
     })
       .then((result) => {
+        console.log(result);
         return result.json();
       })
       .then((getdata) => {
