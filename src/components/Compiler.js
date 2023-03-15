@@ -28,7 +28,7 @@ function Compiler() {
       input: input,
     };
 
-    await fetch("/compile", {
+    await fetch("https://code-editor-api-l6iv.onrender.com/compile", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
