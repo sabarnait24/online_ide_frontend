@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import CodeMirror from "@uiw/react-codemirror";
 import { javascript } from "@codemirror/lang-javascript";
 
@@ -57,8 +57,7 @@ function Compiler() {
     socket.on("codesync", ({ value }) => {
       console.log(value);
       setData(value);
-      editor.current=value
-      console.log(editor.current);
+      
     });
     socket.on("inputsync", ({ inputvalue }) => {
       console.log(inputvalue);
@@ -72,7 +71,7 @@ function Compiler() {
     });
   }, [])
   
-  const editor = useRef(null)
+
 
   const location = useLocation();
   // console.log(location);
@@ -145,7 +144,7 @@ function Compiler() {
                 value,
               });
             }}
-            ref={editor}
+            
           />
         </div>
 
