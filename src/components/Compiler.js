@@ -44,34 +44,31 @@ function Compiler() {
         setOutput(getdata["output"]);
         socket.emit("outputchange", {
           roomID,
-          outputvalue :getdata["output"],
+          outputvalue: getdata["output"],
         });
-        
       })
       .catch((err) => {
         console.log(err);
       });
   };
+  socket.on("codesync", ( {value} ) => {
+    console.log("hi", value);
+    setData(value);
+  });
   useEffect(() => {
-    
-    socket.on("codesync", ({ value }) => {
-      console.log(value);
+    socket.on("codesync", ( {value} ) => {
+      console.log("hi", value);
       setData(value);
-      
     });
     socket.on("inputsync", ({ inputvalue }) => {
       console.log(inputvalue);
       setInput(inputvalue);
-     
     });
     socket.on("outputsync", ({ outputvalue }) => {
-      console.log("output is" , outputvalue);
+      console.log("output is", outputvalue);
       setOutput(outputvalue);
-     
     });
-  }, [])
-  
-
+  }, []);
 
   const location = useLocation();
   // console.log(location);
@@ -144,7 +141,6 @@ function Compiler() {
                 value,
               });
             }}
-            
           />
         </div>
 
@@ -157,13 +153,12 @@ function Compiler() {
               className="textarea textarea-bordered bg-black w-full h-56 text-white text-lg font-extrabold"
               value={input}
               onChange={(e) => {
-                setInput(e.target.value)
+                setInput(e.target.value);
                 socket.emit("inputchange", {
                   roomID,
-                  inputvalue : e.target.value,
+                  inputvalue: e.target.value,
                 });
               }}
-              
             />
           </div>
           <div className="pl-2 my-1">
@@ -174,8 +169,7 @@ function Compiler() {
               className="textarea textarea-bordered bg-black w-full h-56 text-white text-lg font-extrabold"
               value={output}
               onChange={(e) => {
-                setOutput(e.target.value)
-        
+                setOutput(e.target.value);
               }}
             ></textarea>
           </div>
